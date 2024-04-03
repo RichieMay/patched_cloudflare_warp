@@ -22,10 +22,10 @@ def get_func_section(file_path: str, func_name_regex: str) -> tuple:
     end = begin + int(keywords[2])      
     return tuple((begin, end))
 
-def modify_bind_ip_address(file_path: str, new_ip_addr:str) -> bool:
+def modify_bind_ip_address(file_path: str, new_ipv4_addr: str) -> bool:
     start_hex = b'\x49'
     follow_hex = b"\xC1\xE4\x20\x49\x81\xCC"
-    ipv4_bytes = IPv4Address(new_ip_addr).packed
+    ipv4_bytes = IPv4Address(new_ipv4_addr).packed
 
     begin, end = get_func_section(file_path, "FUNC.+WarpConnection\d+start_inner\d+")
     with open(file_path, "rb+") as f:
