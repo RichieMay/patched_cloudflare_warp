@@ -34,7 +34,6 @@ def modify_bind_ip_address(file_path: str, new_ip_addr:str) -> bool:
         while begin < end:
             begin += len(start_hex)
             char = f.read(len(start_hex))
-
             if not char:
                 break
 
